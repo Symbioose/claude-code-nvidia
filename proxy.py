@@ -228,7 +228,7 @@ def messages():
 
 @app.route("/health", methods=["GET"])
 def health():
-    return jsonify({"status": "ok", "model": DEFAULT_MODEL})
+    return jsonify({"status": "ok", "opus": MODEL_OPUS, "sonnet": MODEL_SONNET, "haiku": MODEL_HAIKU})
 
 
 if __name__ == "__main__":
@@ -236,14 +236,9 @@ if __name__ == "__main__":
         print("Error: NVIDIA_API_KEY env var not set")
         sys.exit(1)
 
-    port = int(sys.argv[1]) if len(sys.argv) > 1 else 3000
+    port = int(sys.argv[1]) if len(sys.argv) > 1 else 9090
     print(f"Proxy running on http://localhost:{port}")
-    print(f"\nConfigure Claude Code:")
-    print(f"  export ANTHROPIC_BASE_URL=http://localhost:{port}")
-    print(f"  export ANTHROPIC_API_KEY=not-used")
-    print(f"  export ANTHROPIC_CUSTOM_MODEL_OPTION={DEFAULT_MODEL}")
-    print(f"  export ANTHROPIC_DEFAULT_HAIKU_MODEL={DEFAULT_MODEL}")
-    print(f"  export ANTHROPIC_DEFAULT_SONNET_MODEL={DEFAULT_MODEL}")
-    print(f"  export ANTHROPIC_DEFAULT_OPUS_MODEL={DEFAULT_MODEL}")
-    print(f"  export CLAUDE_CODE_SUBAGENT_MODEL={DEFAULT_MODEL}")
+    print(f"  opus   → {MODEL_OPUS}")
+    print(f"  sonnet → {MODEL_SONNET}")
+    print(f"  haiku  → {MODEL_HAIKU}")
     app.run(host="0.0.0.0", port=port, debug=False)
