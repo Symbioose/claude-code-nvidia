@@ -13,7 +13,7 @@ Go to [build.nvidia.com](https://build.nvidia.com), create an account, and copy 
 **2. Install**
 
 ```bash
-git clone https://github.com/emilejouannet/claude-nim
+git clone https://github.com/Symbioose/claude-code-nvidia
 cd free-claude
 cp .env.example .env
 ```
