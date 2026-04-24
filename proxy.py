@@ -154,7 +154,7 @@ def to_anthropic_response(oai, model):
 @app.route("/v1/messages", methods=["POST"])
 def messages():
     body = request.get_json()
-    model = ANTHROPIC_MODEL_MAP.get(body.get("model", ""), DEFAULT_MODEL)
+    model = ANTHROPIC_MODEL_MAP.get(body.get("model", ""), MODEL_OPUS)
     stream = body.get("stream", False)
 
     oai_body = {
